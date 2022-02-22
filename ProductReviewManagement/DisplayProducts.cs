@@ -55,8 +55,8 @@ namespace ProductReviewManagement
         public static void GetAllIsLikedReviews()
         {
             var Table = from product in table.AsEnumerable()
-                              where (string)product["IsLike"] == "true"
-                              select product;
+                        where (string)product["IsLike"] == "true"
+                        select product;
 
             Console.WriteLine("\n");
             foreach (var list in Table)
@@ -64,5 +64,23 @@ namespace ProductReviewManagement
                 Console.WriteLine("ProductID: " + list.Field<string>("ProductId") + ", UserID: " + list.Field<string>("UserId") + ", Rating: " + list.Field<string>("Rating") + " , Review: " + list.Field<string>("Review") + " , IsLike: " + list.Field<string>("IsLike"));
             }
         }
+        //get average rating of each product ID
+        public static void AverageRatingOfEachProductId(List<ProductReview> ProductReview)
+        {
+            var data = from productReviews in ProductReview
+                       group productReviews by productReviews.ProductId into g
+                       select new
+                       {
+                           ProductID = g.Key,
+                           AverageRating = g.Average(x => x.Rating)
+                       };
+            Console.WriteLine("\n");
+            Console.WriteLine("\nProductID with AverageRating");
+            foreach (var a in data)
+            {
+                Console.WriteLine(a.ProductID + " ----------- " + a.AverageRating);
+            }
+        }
+
     }
 }
