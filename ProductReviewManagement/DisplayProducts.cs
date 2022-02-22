@@ -78,9 +78,20 @@ namespace ProductReviewManagement
             Console.WriteLine("\nProductID with AverageRating");
             foreach (var a in data)
             {
-                Console.WriteLine(a.ProductID + " ----------- " + a.AverageRating);
+                Console.WriteLine(a.ProductID + " --- " + a.AverageRating);
             }
         }
-
+        //Method tp get all records with nice review
+        public static void RecordWithNiceReview(List<ProductReview> ProductReview)
+        {
+            var data = from productReviews in ProductReview
+                       where (productReviews.Review == "nice")
+                       select productReviews;
+            Console.WriteLine("\n");
+            foreach (var list in data)
+            {
+                Console.WriteLine("ProductID: " + list.ProductId + " UserID: " + list.UserId + " Rating: " + list.Rating + " Review: " + list.Review + " isLike: " + list.IsLike);
+            }
+        }
     }
 }

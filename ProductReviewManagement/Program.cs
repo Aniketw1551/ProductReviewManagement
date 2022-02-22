@@ -30,6 +30,8 @@ namespace ProductReviewManagement
             DisplayProducts.GetDataFromDataTable();
             DisplayProducts.GetAllIsLikedReviews();
             DisplayProducts.AverageRatingOfEachProductId(product);
+            DisplayProducts.RecordWithNiceReview(product);
+
         }
     }
 }
