@@ -19,8 +19,9 @@ namespace ProductReviewManagement
         {
             ProductManagement p = new ProductManagement();
             var product = p.AddMultipleProductReviewInList();
-            p.IterateOverProductList(product);
-            p.RetrieveTop3Records(product);
+            //p.IterateOverProductList(product);
+            //p.RetrieveTop3Records(product);
+            p.GetRecordsAsPerRatingsAndProductId(product);
         }
     }
 }
